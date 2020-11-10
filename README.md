@@ -17,4 +17,5 @@ Docker image for fuzzy time series.
 
 ## Autor
 
-- [Marcos Vinícius](Marcos Vinícius)
+- [Marcos Vinícius](https://marcos001.github.io/)
+
