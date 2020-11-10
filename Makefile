@@ -1,5 +1,5 @@
 # -----------------------------------------
-# Docker image R for Fuzzy Time Series 
+# Docker image R for Fuzzy Time Series
 # -----------------------------------------
 # .
 # by Marcos Vinícius
@@ -8,13 +8,15 @@
 
 .PHONY: help
 
+PROJECT_FOLDER = "/media/marcos/SD8/MS/mestrado-marcos-vinicius/"
+
 up:
 	@echo "starting container r-fts"
-	@docker-compose up 
+	@docker run -ti -v ${PROJECT_FOLDER}:/home/fts/dynsys/ r-fts bash
 
 build:
 	@echo "build image r-fts"
-	@docker-compose build 
+	@docker-compose build
 
 stop:
 	@echo "stop containers"
@@ -26,8 +28,11 @@ rm: stop
 
 clean:
 	@echo "remove ans stop all containers"
-	@docker stop $(docker ps -aq)
+	@docker stop $(shell docker ps -aq)
+	@docker rm $(shell docker ps -aq)
 
+show:
+	@docker ps -a
 
 help:
 	@echo "----------------------------------------"
