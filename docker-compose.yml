@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+    r-fts:
+        container_name: r-fts-container
+        image: r-fts:latest
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                R_VERSION: 3.5.2
+        volumes:
+        - '.:/home/fts'
+      
+
+
