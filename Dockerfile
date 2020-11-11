@@ -1,5 +1,6 @@
 # base image that includes R.
-FROM rstudio/r-base:3.5-xenial
+#FROM rstudio/r-base:3.6-xenial
+FROM  r-base:3.6.3
 
 ARG HOME
 
@@ -36,7 +37,8 @@ RUN apt-get install -y \
     libcurl4-openssl-dev \
     libssl-dev \
     pandoc \
-    libxml2-dev
+    libxml2-dev \
+    r-cran-rgl
 
 # copy file with packages requeriments
 COPY requeriments.R ${HOME}requeriments.R

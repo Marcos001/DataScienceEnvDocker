@@ -8,7 +8,7 @@
 
 .PHONY: help
 
-PROJECT_FOLDER = "/media/marcos/SD8/MS/mestrado-marcos-vinicius/"
+PROJECT_FOLDER = "/media/marcos/SD9/MS/mestrado-marcos-vinicius/"
 
 up:
 	@echo "starting container r-fts"
@@ -30,6 +30,7 @@ clean:
 	@echo "remove ans stop all containers"
 	@docker stop $(shell docker ps -aq)
 	@docker rm $(shell docker ps -aq)
+
 
 show:
 	@docker ps -a
