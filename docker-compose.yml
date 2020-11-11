@@ -8,9 +8,6 @@ services:
             context: .
             dockerfile: Dockerfile
             args:
-                R_VERSION: 3.5.2
+                HOME: /home/fts/
         volumes:
         - '.:/home/fts'
-      
-
-

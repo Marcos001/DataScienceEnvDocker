@@ -1,4 +1,7 @@
-FROM ubuntu:xenial
+# base image that includes R.
+FROM rstudio/r-base:3.5-xenial
+
+ARG HOME
 
 # Install system dependencies for R
 RUN apt-get update -qq && \
@@ -35,32 +38,10 @@ RUN apt-get install -y \
     pandoc \
     libxml2-dev
 
+# copy file with packages requeriments
+COPY requeriments.R ${HOME}requeriments.R
 
-# download a version of R and build from source
-ARG R_VERSION
-RUN wget https://cdn.rstudio.com/r/ubuntu-1604/pkgs/r-${R_VERSION}_1_amd64.deb
-RUN apt-get install -y gdebi-core
-RUN gdebi r-${R_VERSION}_1_amd64.deb
+WORKDIR ${HOME}
 
-
-# be sure you request a specific version of R - =3.4.4-1ubuntu1
-RUN apt-get install -y r-base
-
-# copy file
-COPY requeriments.R /home/fts/requeriments.R
-
-## install R-packages  dependencies=TRUE,
-RUN R -e "install.packages('dplyr', repos='http://cran.rstudio.com/')"
-RUN R -e "install.packages('rgl', repos='http://cran.rstudio.com/')"
-RUN R -e "install.packages('fNonlinear', repos='http://cran.rstudio.com/')"
-RUN R -e "install.packages('ppclust', repos='http://cran.rstudio.com/')"
-RUN R -e "install.packages('EMD', repos='http://cran.rstudio.com/')"
-RUN R -e "install.packages('tseriesChaos', repos='http://cran.rstudio.com/')"
-RUN R -e "install.packages('TSdist', repos='http://cran.rstudio.com/')"
-RUN R -e "install.packages('Metrics', repos='http://cran.rstudio.com/')"
-RUN R -e "install.packages('beepr', repos='http://cran.rstudio.com/')"
-
-#CMD Rscript /home/fts/ requeriments.R
-
-
-
+## install R-packages
+RUN Rscript requeriments.R
