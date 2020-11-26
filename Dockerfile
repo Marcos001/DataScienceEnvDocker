@@ -31,6 +31,13 @@ RUN apt-get update -qq && \
     zlib1g-dev \
     libreadline-dev
 
+# Install python dev
+RUN apt-get install -y python3-pip python3-dev
+
+## install python packages
+RUN pip install --upgrade pip 
+RUN pip install pip install -r requirements.txt
+
 # Install system dependencies for the tidyverse R packages
 RUN apt-get install -y \
     make \
@@ -47,3 +54,5 @@ WORKDIR ${HOME}
 
 ## install R-packages
 RUN Rscript requeriments.R
+
+

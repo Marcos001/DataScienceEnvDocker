@@ -8,7 +8,13 @@
 
 .PHONY: help
 
-PROJECT_FOLDER = "/media/marcos/SD9/MS/mestrado-marcos-vinicius/"
+PROJECT_FOLDER = "/home/marcos/maskviewdocker/data/"
+
+# create a make dev up UI
+
+up-ui:
+	@echo "starting container witj jupyter-lab"
+	@docker run -it --name=r-fts-lab -p 8888:8888 -v ${PROJECT_FOLDER}:/home/fts/dynsys/ r-fts bash
 
 up:
 	@echo "starting container r-fts"

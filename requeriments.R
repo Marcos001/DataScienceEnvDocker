@@ -10,3 +10,9 @@ install.packages("beepr", repos='http://cran.rstudio.com/')
 install.packages("rgl", repos='http://R-Forge.R-project.org') # no instaled
 install.packages("TSdist",  repos='http://cran.rstudio.com/') # no instaled
 
+# for jupyter-lab
+install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'))
+devtools::install_github('IRkernel/IRkernel')
+
+# install system-wide
+IRkernel::installspec(user = FALSE)
