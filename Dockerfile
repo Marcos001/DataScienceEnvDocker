@@ -11,6 +11,7 @@ RUN apt-get update -qq && \
     build-essential \
     wget \
     curl \
+    git \
     gfortran \
     libatlas-base-dev \
     libbz2-dev \
@@ -31,12 +32,10 @@ RUN apt-get update -qq && \
     zlib1g-dev \
     libreadline-dev
 
+
+
 # Install python dev
 RUN apt-get install -y python3-pip python3-dev
-
-## install python packages
-RUN pip install --upgrade pip 
-RUN pip install pip install -r requirements.txt
 
 # Install system dependencies for the tidyverse R packages
 RUN apt-get install -y \
@@ -47,10 +46,15 @@ RUN apt-get install -y \
     libxml2-dev \
     r-cran-rgl
 
+WORKDIR ${HOME}
+
 # copy file with packages requeriments
 COPY requeriments.R ${HOME}requeriments.R
+COPY requeriments.txt ${HOME}requeriments.txt
 
-WORKDIR ${HOME}
+## install python packages
+RUN pip install --upgrade pip 
+RUN pip install -r requeriments.txt
 
 ## install R-packages
 RUN Rscript requeriments.R
