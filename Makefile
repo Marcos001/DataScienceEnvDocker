@@ -8,7 +8,7 @@
 
 .PHONY: help
 
-PROJECT_FOLDER = "/home/marcos/maskviewdocker/data/"
+PROJECT_FOLDER = "/media/marcos/SD/MS/mestrado-marcos-vinicius/"
 
 # mape in e out folder, like project folder
 
@@ -17,7 +17,7 @@ PROJECT_FOLDER = "/home/marcos/maskviewdocker/data/"
 up-lab:
 	@echo "starting container with jupyter-lab"
 	@docker run --name=r-fts-lab -p "0.0.0.0:8888:8888" \
-	  -v ${PROJECT_FOLDER}:/home/fts/dynsys/ r-fts \
+	  -v ${PROJECT_FOLDER}:/home/fts/app/ r-fts \
 	   jupyter-lab --ip 0.0.0.0 --no-browser --allow-root
 
 up:
