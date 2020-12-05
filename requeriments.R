@@ -1,4 +1,5 @@
 install.packages("devtools", repos='http://cran.rstudio.com/')
+install.packages("plotly", repos='http://cran.rstudio.com/') 
 
 library('devtools')
 install_github("RBigData/pbdZMQ")

@@ -8,17 +8,20 @@
 
 .PHONY: help
 
-PROJECT_FOLDER = "/media/marcos/SD/MS/mestrado-marcos-vinicius/"
+PROJECT_FOLDER = "/home/marcos/maskviewdocker/data/"
 
 # mape in e out folder, like project folder
 
 # create a make dev up UI
 
+
+
 up-lab:
 	@echo "starting container with jupyter-lab"
-	@docker run --name=r-fts-lab -p "0.0.0.0:8888:8888" \
-	  -v ${PROJECT_FOLDER}:/home/fts/app/ r-fts \
-	   jupyter-lab --ip 0.0.0.0 --no-browser --allow-root
+	@docker-compose --env-file .env.folder  up
+	#@docker run --name=r-fts-lab -p "0.0.0.0:8888:8888" \
+	#  -v ${PROJECT_FOLDER}:/home/fts/app/ r-fts \
+	#   jupyter-lab --ip 0.0.0.0 --no-browser --allow-root
 
 up:
 	@echo "starting container r-fts"
