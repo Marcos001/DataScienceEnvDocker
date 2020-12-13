@@ -1,8 +1,11 @@
-tensorflow
+mtcnn
 keras
 pandas
-matplotlib
+pyzmq
 seaborn
+plotly
+tensorflow
+matplotlib
 scikit-image
 scikit-learn
 opencv-python

@@ -1,5 +1,4 @@
 # base image that includes R.
-#FROM rstudio/r-base:3.6-xenial
 FROM  r-base:3.6.3
 
 ARG HOME
@@ -30,12 +29,10 @@ RUN apt-get update -qq && \
     locales \
     tzdata \
     zlib1g-dev \
+    libffi-dev \
+    libsqlite3-dev \
     libreadline-dev
 
-
-
-# Install python dev
-RUN apt-get install -y python3-pip python3-dev
 
 # Install system dependencies for the tidyverse R packages
 RUN apt-get install -y \
@@ -48,15 +45,29 @@ RUN apt-get install -y \
 
 WORKDIR ${HOME}
 
+
 # copy file with packages requeriments
 COPY requeriments.R ${HOME}requeriments.R
 COPY requeriments.txt ${HOME}requeriments.txt
 
+# install pyenv and python
+RUN git clone git://github.com/yyuu/pyenv.git .pyenv
+
+ENV PYENV_ROOT ${HOME}/.pyenv
+ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
+
+RUN pyenv install 3.8.1
+RUN pyenv global 3.8.1
+RUN pyenv rehash
+
+RUN pip  install --upgrade pip 
+
 ## install python packages
-RUN pip install --upgrade pip 
 RUN pip install -r requeriments.txt
 
 ## install R-packages
 RUN Rscript requeriments.R
 
-
+# remove files
+RUN rm requeriments.R
+RUN rm requeriments.txt
