@@ -9,6 +9,12 @@ matplotlib
 scikit-image
 scikit-learn
 opencv-python
+opencv-contrib-python
 ipython
 jupyter
 jupyterlab
+keras-vggface
+Keras-Applications
+Keras-Preprocessing
+keras-vggface
+

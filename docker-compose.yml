@@ -2,8 +2,8 @@ version: '3.7'
 
 services:
     r-fts:
-        container_name: r-fts-container
-        image: r-fts:latest
+        container_name: ds-cpu-container
+        image: ds-cpu:latest
         build:
             context: .
             dockerfile: Dockerfile
