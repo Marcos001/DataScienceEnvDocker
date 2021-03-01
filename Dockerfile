@@ -11,10 +11,10 @@ RUN apt-get update -qq && \
     wget \
     curl \
     git \
+    cmake \
     gfortran \
     libatlas-base-dev \
     libbz2-dev \
-    libcairo2 \
     libcurl4-openssl-dev \
     libicu-dev \
     liblzma-dev \
