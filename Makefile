@@ -1,5 +1,5 @@
 # -----------------------------------------
-# Docker image R for Fuzzy Time Series
+# Docker image for Data Science --------- +
 # -----------------------------------------
 # .
 # by Marcos Vinícius
@@ -8,24 +8,41 @@
 
 .PHONY: help
 
-PROJECT_FOLDER = "/home/marcos/maskviewdocker/data/"
-
-# mape in e out folder, like project folder
-
-# create a make dev up UI
+up-pro:
+	@echo "starting container in HOME PROJECTS with jupyter-lab"
+	@docker-compose --env-file .envs/.home.projects up -d
 
 
-
-up-lab:
+up-neo:
 	@echo "starting container with jupyter-lab"
-	@docker-compose --env-file .env.folder  up
-	#@docker run --name=r-fts-lab -p "0.0.0.0:8888:8888" \
-	#  -v ${PROJECT_FOLDER}:/home/fts/app/ r-fts \
-	#   jupyter-lab --ip 0.0.0.0 --no-browser --allow-root
+	@docker-compose --env-file .env.folder up
 
-up:
-	@echo "starting container r-fts"
-	@docker run -ti -v ${PROJECT_FOLDER}:/home/fts/dynsys/ r-fts bash
+
+up-neo-filter:
+	@echo "starting container ds-cpu"
+	@docker-compose --env-file .env.neo.filter up
+
+
+up-ms-ffts:
+	@echo "starting container ds-cpu"
+	@docker-compose --env-file .env.neo.filter up
+
+
+up-phd:
+	@echo "starting container ds-cpu for PHD"
+	@docker-compose --env-file .env.phd up -d
+
+
+up-pet:
+	@echo "starting container ds-cpu for Pet Barros"
+	@docker-compose --env-file .envs/.env.pet up -d
+	@docker logs ds-cpu-container
+
+up-sc:
+	@echo "starting container ds-cpu for Signal Classification"
+	@docker-compose --env-file .envs/.signal.classification up -d
+	@docker logs ds-cpu-container
+
 
 build:
 	@echo "build image r-fts"
@@ -39,18 +56,20 @@ rm: stop
 	@echo "remove r-fts image"
 	@docker rmi r-fts
 
-clean:
+clean-all:
 	@echo "remove ans stop all containers"
 	@docker stop $(shell docker ps -aq)
 	@docker rm $(shell docker ps -aq)
 
+logs:
+	@docker logs ds-cpu-container
 
 show:
 	@docker ps -a
 
 help:
 	@echo "----------------------------------------"
-	@echo "Docker image R for Fuzzy Time Series"
+	@echo "+ Docker image for Data Science -------- +"
 	@echo "----------------------------------------"
 	@echo ""
 	@echo "OPTIONS"

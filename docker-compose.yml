@@ -3,7 +3,7 @@ version: '3.7'
 services:
     ds-cpu:
         container_name: ds-cpu-container
-        image: ds-cpu:0.0.2
+        image: ds-cpu:0.1.0
         build:
             context: .
             dockerfile: Dockerfile

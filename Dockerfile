@@ -31,7 +31,10 @@ RUN apt-get update -qq && \
     zlib1g-dev \
     libffi-dev \
     libsqlite3-dev \
-    libreadline-dev
+    libreadline-dev \
+    texlive-xetex \ 
+    texlive-fonts-recommended \
+    texlive-generic-recommended
 
 
 # Install system dependencies for the tidyverse R packages

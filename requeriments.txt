@@ -17,4 +17,4 @@ keras-vggface
 Keras-Applications
 Keras-Preprocessing
 keras-vggface
-
+tqdm
