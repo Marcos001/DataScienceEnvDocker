@@ -13,7 +13,7 @@ up-pro:
 	@docker-compose --env-file .envs/.home.projects up -d
 
 
-up-neo:
+up:
 	@echo "starting container with jupyter-lab"
 	@docker-compose --env-file .env.folder up
 

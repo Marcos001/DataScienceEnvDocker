@@ -1,6 +1,10 @@
 install.packages("devtools", repos='http://cran.rstudio.com/')
 install.packages("plotly", repos='http://cran.rstudio.com/') 
 
+install.packages("ellipsis", version = "0.3.2", repos='http://cran.rstudio.com/') 
+
+
+
 library('devtools')
 install_github("RBigData/pbdZMQ")
 
@@ -19,7 +23,7 @@ install.packages("TSdist",  repos='http://cran.rstudio.com/') # no instaled
 # for jupyter-lab
 devtools::install_github('IRkernel/IRkernel')
 devtools::install_github("IRkernel/repr")
-devtools::install_github("IRkernel/IRdisplay")
+devtools::install_github("IRkernel/IRdisplay", force = TRUE)
 devtools::install_github("IRkernel/IRkernel")
 
 # install system-wide
